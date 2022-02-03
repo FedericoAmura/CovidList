@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "534c6861-9c36-4282-9ec2-d0fdd6ff7dbe",
+		"name": "Lemon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Countries",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.covid19api.com/countries",
+					"protocol": "https",
+					"host": [
+						"api",
+						"covid19api",
+						"com"
+					],
+					"path": [
+						"countries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirmed cases",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.covid19api.com/total/dayone/country/:country/status/confirmed",
+					"protocol": "https",
+					"host": [
+						"api",
+						"covid19api",
+						"com"
+					],
+					"path": [
+						"total",
+						"dayone",
+						"country",
+						":country",
+						"status",
+						"confirmed"
+					],
+					"variable": [
+						{
+							"key": "country",
+							"value": "belize"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
