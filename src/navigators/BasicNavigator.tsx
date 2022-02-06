@@ -13,9 +13,9 @@ const BasicNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name={screens.LOGIN} component={Login} />
-        <Stack.Screen name={screens.COUNTRIES} component={Countries} />
-        <Stack.Screen name={screens.COUNTRY} component={Country} />
+        <Stack.Screen key={screens.LOGIN} name={screens.LOGIN} component={Login} />
+        <Stack.Screen key={screens.COUNTRIES} name={screens.COUNTRIES} component={Countries} />
+        <Stack.Screen key={screens.COUNTRY} name={screens.COUNTRY} component={Country} />
       </Stack.Navigator>
     </NavigationContainer>
   );

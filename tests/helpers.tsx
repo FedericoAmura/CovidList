@@ -18,6 +18,7 @@ export const renderWithNavigation = (component: React.ComponentType<any>, otherS
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
+          key={TEST_SCREEN}
           name={TEST_SCREEN}
           component={component}
         />
