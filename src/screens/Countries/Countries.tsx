@@ -4,9 +4,12 @@ import { object } from 'prop-types';
 
 import screens from '../../constants/screens';
 import testIds from '../../constants/testIds';
+import useSession from '../../hooks/useSession';
 
 // @ts-ignore
 const Countries = ({ navigation }) => {
+  const { signOut } = useSession();
+
   const goToCountryScreen = useCallback(() => {
     navigation.navigate(screens.COUNTRY);
   }, [navigation]);
@@ -14,7 +17,14 @@ const Countries = ({ navigation }) => {
   return (
     <View style={styles.container} testID={testIds.COUNTRIES_SCREEN.container}>
       <Text style={styles.text}>This is the countries screen</Text>
-      <Button title="Country" onPress={goToCountryScreen} />
+      <Button testID="country-button" title="Country" onPress={goToCountryScreen} />
+      <View>
+        <Button
+          testID="logout-button"
+          onPress={signOut}
+          title="LogOut"
+          color="red" />
+      </View>
     </View>
   );
 }

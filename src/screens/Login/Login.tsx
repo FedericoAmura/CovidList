@@ -1,20 +1,20 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { object } from 'prop-types';
 
-import screens from '../../constants/screens';
 import testIds from '../../constants/testIds';
+import useSession from '../../hooks/useSession';
 
-// @ts-ignore
-const Login = ({ navigation }) => {
-  const goToCountriesScreen = useCallback(() => {
-    navigation.navigate(screens.COUNTRIES);
-  }, [navigation]);
+const Login = () => {
+  const { signIn } = useSession();
 
   return (
     <View style={styles.container} testID={testIds.LOGIN_SCREEN.container}>
-      <Text style={styles.text}>This is the login screen</Text>
-      <Button title="Login" onPress={goToCountriesScreen} />
+      <Text style={styles.text}>Welcome to Covid List</Text>
+
+      <Button
+        title="Sign in with Google"
+        onPress={signIn}
+      />
     </View>
   );
 }
@@ -30,8 +30,6 @@ const styles = StyleSheet.create({
   },
 });
 
-Login.propTypes = {
-  navigation: object.isRequired,
-};
+Login.propTypes = {};
 
 export default Login;

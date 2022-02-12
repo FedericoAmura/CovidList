@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "852389783634",
+    "project_id": "covidlist-4db85",
+    "storage_bucket": "covidlist-4db85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852389783634:android:35788882d184220332578b",
+        "android_client_info": {
+          "package_name": "com.covidlist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852389783634-phbjpb6pbk5cqsgfgpmd52urj2k8k508.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.covidlist",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "852389783634-vubbcrg6552pltrim2fc20q73figdfgs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGAXhoUZikZjeZ-LPrdI-jw4DqqwmCa90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852389783634-vubbcrg6552pltrim2fc20q73figdfgs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "852389783634-1sroc6na6fbkj1obbs411tenhd37ersp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.covidlist"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,13 +1,13 @@
 export default {
   LOGIN_SCREEN: {
-    container: 'container',
+    container: 'login-screen-container',
   },
 
   COUNTRIES_SCREEN: {
-    container: 'container',
+    container: 'countries-screen-container',
   },
 
   COUNTRY_SCREEN: {
-    container: 'container',
+    container: 'country-screen-container',
   },
 };

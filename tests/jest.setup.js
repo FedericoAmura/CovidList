@@ -16,3 +16,12 @@ jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
 global.__reanimatedWorkletInit = jest.fn();
 
 jest.useFakeTimers();
+
+jest.mock('../src/hooks/useSession', () => ({
+  __esModule: true,
+  default: () => ({
+    signIn: jest.fn(),
+    signOut: jest.fn(),
+    getUserData: () => null,
+  }),
+}));

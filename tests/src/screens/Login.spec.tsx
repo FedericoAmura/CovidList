@@ -1,24 +1,26 @@
 import React from 'react';
-import { Button } from 'react-native';
-import { act } from 'react-test-renderer';
+import { ReactTestRenderer } from 'react-test-renderer';
 
 import { renderWithNavigation } from '../../helpers';
 import screens from '../../../src/constants/screens';
+import testIds from '../../../src/constants/testIds';
 import Countries from '../../../src/screens/Countries';
 import Login from '../../../src/screens/Login';
 
 describe('LoginScreen', () => {
-  it('Should render correctly', () => {
-    const instance = renderWithNavigation(Login, [
+  let render: ReactTestRenderer;
+
+  beforeEach(() => {
+    render = renderWithNavigation(Login, [
       {
         name: screens.COUNTRIES,
         component: Countries,
-      },
+      }
     ]);
+  });
 
-    const button = instance.root.findByType(Button);
-    act(() => {
-      button.props.onPress();
-    });
+  it('Should render correctly', () => {
+    const loginScreen = render.root.findByProps({ testID: testIds.LOGIN_SCREEN.container });
+    expect(loginScreen).toBeTruthy();
   });
 });

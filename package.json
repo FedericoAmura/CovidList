@@ -12,10 +12,14 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
+    "@react-native-firebase/app": "^14.3.1",
+    "@react-native-firebase/auth": "^14.3.1",
+    "@react-native-google-signin/google-signin": "^7.0.4",
     "@react-navigation/native": "^5.9.8",
     "@react-navigation/stack": "^5.14.9",
     "react": "17.0.2",
     "react-native": "0.67.2",
+    "react-native-encrypted-storage": "^4.0.2",
     "react-native-gesture-handler": "^2.2.0",
     "react-native-reanimated": "^2.3.1",
     "react-native-safe-area-context": "^3.3.2",
@@ -45,7 +49,6 @@
     "setupFiles": [
       "<rootDir>/tests/jest.setup.js"
     ],
-
     "moduleFileExtensions": [
       "ts",
       "tsx",

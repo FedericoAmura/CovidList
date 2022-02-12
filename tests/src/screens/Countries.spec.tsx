@@ -1,24 +1,36 @@
 import React from 'react';
-import { Button } from 'react-native';
-import { act } from 'react-test-renderer';
+import { act, ReactTestRenderer } from 'react-test-renderer';
 
 import { renderWithNavigation } from '../../helpers';
 import screens from '../../../src/constants/screens';
+import testIds from '../../../src/constants/testIds';
 import Countries from '../../../src/screens/Countries';
 import Country from '../../../src/screens/Country';
 
 describe('CountriesScreen', () => {
-  it('Should render correctly', () => {
-    const instance = renderWithNavigation(Countries, [
+  let render: ReactTestRenderer;
+
+  beforeEach(() => {
+    render = renderWithNavigation(Countries, [
       {
         name: screens.COUNTRY,
         component: Country,
       }
     ]);
+  });
 
-    const button = instance.root.findByType(Button);
+  it('Should render correctly', () => {
+    const countriesScreen = render.root.findByProps({ testID: testIds.COUNTRIES_SCREEN.container });
+    expect(countriesScreen).toBeTruthy();
+  });
+
+  it('Should navigate to CountryScreen upon click', () => {
+    const countryButton = render.root.findByProps({testID: "country-button"});
     act(() => {
-      button.props.onPress();
+      countryButton.props.onPress();
     });
+
+    const countryScreen = render.root.findByProps({ testID: testIds.COUNTRY_SCREEN.container });
+    expect(countryScreen).toBeTruthy();
   });
 });
