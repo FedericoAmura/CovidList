@@ -17,15 +17,9 @@ describe('AuthNavigator', () => {
     expect(loginScreen).toBeTruthy();
   });
 
-  it('Should render countries screen when user is logged in', () => {
-    jest.mock('../../../src/hooks/useSession', () => ({
-      __esModule: true,
-      default: () => ({
-        getUserData: () => ({}), // we just need a truthy value
-      }),
-    }));
-
-    const loginScreen = render.root.findByProps({ testID: testIds.LOGIN_SCREEN.container });
-    expect(loginScreen).toBeTruthy();
-  });
+  // it('Should render countries screen when user is logged in', () => {
+  //   // TODO needs a dynamic mock on useSession
+  //   const countriesScreen = render.root.findByProps({ testID: testIds.COUNTRIES_SCREEN.container });
+  //   expect(countriesScreen).toBeTruthy();
+  // });
 });
