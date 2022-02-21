@@ -1,5 +1,7 @@
 import 'react-native-gesture-handler/jestSetup';
 
+import './__mocks__/useSession';
+
 jest.mock('react-native-reanimated', () => {
   const Reanimated = require('react-native-reanimated/mock');
 
@@ -16,12 +18,3 @@ jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
 global.__reanimatedWorkletInit = jest.fn();
 
 jest.useFakeTimers();
-
-jest.mock('../src/hooks/useSession', () => ({
-  __esModule: true,
-  default: () => ({
-    signIn: jest.fn(),
-    signOut: jest.fn(),
-    getUserData: () => null,
-  }),
-}));
