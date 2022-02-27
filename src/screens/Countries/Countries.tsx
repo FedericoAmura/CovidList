@@ -1,30 +1,30 @@
-import React, { useCallback } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { object } from 'prop-types';
 
+import CountryItem from '../../components/CountryItem';
 import screens from '../../constants/screens';
 import testIds from '../../constants/testIds';
-import useSession from '../../hooks/useSession';
+import covidService, { Country } from '../../services/covid19';
 
 // @ts-ignore
 const Countries = ({ navigation }) => {
-  const { signOut } = useSession();
+  const [countries, setCountries] = useState<Country[]>([]);
 
-  const goToCountryScreen = useCallback(() => {
-    navigation.navigate(screens.COUNTRY);
+  useEffect(() => {
+    covidService.getCountries().then(setCountries);
+  }, [setCountries]);
+
+  const goToCountryScreen = useCallback((title: string, slug: string) => {
+    navigation.navigate(screens.COUNTRY, { title, slug });
   }, [navigation]);
+
+  const countryKeyExtractor = useCallback((country: Country) => country.Slug, [])
+  const renderCountryItem = useCallback(({ item }) => <CountryItem country={item} onPress={() => goToCountryScreen(item.Country, item.Slug)} />,[]);
 
   return (
     <View style={styles.container} testID={testIds.COUNTRIES_SCREEN.container}>
-      <Text style={styles.text}>This is the countries screen</Text>
-      <Button testID="country-button" title="Country" onPress={goToCountryScreen} />
-      <View>
-        <Button
-          testID="logout-button"
-          onPress={signOut}
-          title="LogOut"
-          color="red" />
-      </View>
+      <FlatList style={styles.countryList} data={countries} keyExtractor={countryKeyExtractor} renderItem={renderCountryItem} />
     </View>
   );
 }
@@ -37,6 +37,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#282828',
+  },
+  countryList: {
+    flex: 1,
+    width: '100%',
   },
 });
 

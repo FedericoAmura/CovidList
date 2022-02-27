@@ -1,20 +1,41 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { object } from 'prop-types';
 
+import DailyDataItem from '../../components/DailyData';
+import FlatTable from '../../components/FlatTable';
 import testIds from '../../constants/testIds';
+import covidService, { DailyData } from '../../services/covid19';
 
 // @ts-ignore
-const Country = ({ navigation }) => {
+const Country = ({ navigation, route: { params: { title, slug } } }) => {
+  const [countryDaysData, setCountryDaysData] = useState<DailyData[]>([]);
+
   useEffect(() => {
     navigation.setOptions({
-      headerShown: true,
+      headerTitle: title,
     });
-  }, [navigation]);
+  }, []);
+
+  useEffect(() => {
+    covidService.getCountryDailyData(slug).then(setCountryDaysData);
+  }, [setCountryDaysData]);
+
+  const countryDayKeyExtractor = useCallback((dailyData: DailyData) => dailyData.Date, [])
+  const renderCountryDayItem = useCallback(({ item }) => <DailyDataItem dailyData={item} />,[]);
+  const fields = useMemo(() => [{
+    name: 'Date',
+    // @ts-ignore
+    comparator: (a, b) => new Date(b.Date) - new Date(a.Date),
+  }, {
+    name: 'Cases',
+    // @ts-ignore
+    comparator: (a, b) => a.Cases !== b.Cases ? b.Cases - a.Cases : new Date(b.Date) - new Date(a.Date),
+  }], []);
 
   return (
     <View style={styles.container} testID={testIds.COUNTRY_SCREEN.container}>
-      <Text style={styles.text}>This is the country screen</Text>
+      <FlatTable style={styles.table} data={countryDaysData} fields={fields} keyExtractor={countryDayKeyExtractor} renderItem={renderCountryDayItem} />
     </View>
   );
 }
@@ -28,10 +49,15 @@ const styles = StyleSheet.create({
   text: {
     color: '#282828',
   },
+  table: {
+    width: '100%',
+    flex: 1,
+  },
 });
 
 Country.propTypes = {
   navigation: object.isRequired,
+  route: object.isRequired,
 };
 
 export default Country;

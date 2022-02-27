@@ -1,5 +1,5 @@
-import renderer from 'react-test-renderer';
 import React from 'react';
+import renderer from 'react-test-renderer';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -13,7 +13,7 @@ const renderOtherScreens = (otherScreens: any[]) => {
   });
 }
 
-export const renderWithNavigation = (component: React.ComponentType<any>, otherScreens?: any[]) => {
+export const renderWithNavigation = (component: React.ComponentType<any>, componentParams: any = {}, otherScreens?: any[]) => {
   const App = () => (
     <NavigationContainer>
       <Stack.Navigator>
@@ -21,6 +21,7 @@ export const renderWithNavigation = (component: React.ComponentType<any>, otherS
           key={TEST_SCREEN}
           name={TEST_SCREEN}
           component={component}
+          initialParams={componentParams}
         />
         {otherScreens && renderOtherScreens(otherScreens)}
       </Stack.Navigator>

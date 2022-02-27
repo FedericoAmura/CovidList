@@ -11,7 +11,7 @@ describe('LoginScreen', () => {
   let render: ReactTestRenderer;
 
   beforeEach(() => {
-    render = renderWithNavigation(Login, [
+    render = renderWithNavigation(Login, null, [
       {
         name: screens.COUNTRIES,
         component: Countries,
