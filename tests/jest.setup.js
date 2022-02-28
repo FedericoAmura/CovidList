@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler/jestSetup';
 
+import './__mocks__/axios';
 import './__mocks__/encriptedStorage';
 import './__mocks__/googleAuth';
 

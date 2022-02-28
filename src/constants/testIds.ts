@@ -10,4 +10,12 @@ export default {
   COUNTRY_SCREEN: {
     container: 'country-screen-container',
   },
+
+  COUNTRY_NAVIGATOR: {
+    container: 'country-navigator-container',
+  },
+
+  COUNTRY_ITEM_COMPONENT: {
+    container: 'country-item-container',
+  },
 };

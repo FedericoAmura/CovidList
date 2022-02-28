@@ -1,22 +1,27 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { object } from 'prop-types';
 
+import { getCountries } from '../../actions/covid';
 import CountryItem from '../../components/CountryItem';
 import screens from '../../constants/screens';
 import testIds from '../../constants/testIds';
-import covidService, { Country } from '../../services/covid19';
+import { Country } from '../../services/covid';
 
 // @ts-ignore
 const Countries = ({ navigation }) => {
-  const [countries, setCountries] = useState<Country[]>([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    covidService.getCountries().then(setCountries);
-  }, [setCountries]);
+    dispatch(getCountries());
+  }, [dispatch]);
 
-  const goToCountryScreen = useCallback((title: string, slug: string) => {
-    navigation.navigate(screens.COUNTRY, { title, slug });
+  // @ts-ignore
+  const countries = useSelector(({ covid }) => covid.countries, shallowEqual);
+
+  const goToCountryScreen = useCallback((name: string, slug: string) => {
+    navigation.navigate(screens.COUNTRY, { name, slug });
   }, [navigation]);
 
   const countryKeyExtractor = useCallback((country: Country) => country.Slug, [])

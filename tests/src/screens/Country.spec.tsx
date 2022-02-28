@@ -1,6 +1,7 @@
 import React from 'react';
 import { ReactTestRenderer } from 'react-test-renderer';
 
+import { mockInitialStore } from '../configureStore';
 import { renderWithNavigation } from '../../helpers';
 import FlatTable from '../../../src/components/FlatTable';
 import screens from '../../../src/constants/screens';
@@ -17,7 +18,8 @@ describe('CountryScreen', () => {
         name: screens.COUNTRIES,
         component: Countries,
       }
-    ]);
+    ],
+      mockInitialStore);
   });
 
   it('Should render correctly', () => {

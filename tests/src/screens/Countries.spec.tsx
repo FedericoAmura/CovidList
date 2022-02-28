@@ -1,7 +1,8 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import { ReactTestRenderer } from 'react-test-renderer';
+import { act, ReactTestRenderer } from 'react-test-renderer';
 
+import { mockInitialStore } from '../configureStore';
 import { renderWithNavigation } from '../../helpers';
 import screens from '../../../src/constants/screens';
 import testIds from '../../../src/constants/testIds';
@@ -17,7 +18,8 @@ describe('CountriesScreen', () => {
         name: screens.COUNTRY,
         component: Country,
       }
-    ]);
+    ],
+      mockInitialStore);
   });
 
   it('Should render correctly', () => {
@@ -30,13 +32,13 @@ describe('CountriesScreen', () => {
     expect(countriesList).toBeTruthy();
   });
 
-  // it('Should navigate to CountryScreen upon click', () => {
-  //   const jordanCountryButton = render.root.findByType(TouchableOpacity);
-  //   act(() => {
-  //     jordanCountryButton.props.onPress();
-  //   });
-  //
-  //   const countryScreen = render.root.findByProps({ testID: testIds.COUNTRY_SCREEN.container });
-  //   expect(countryScreen).toBeTruthy();
-  // });
+  it('Should navigate to CountryScreen upon click', () => {
+    const jordanCountryButton = render.root.findByProps({ testID: testIds.COUNTRY_ITEM_COMPONENT.container });
+
+    act(() => {
+      jordanCountryButton.props.onPress();
+    });
+    const countryScreen = render.root.findByProps({ testID: testIds.COUNTRY_SCREEN.container });
+    expect(countryScreen).toBeTruthy();
+  });
 });

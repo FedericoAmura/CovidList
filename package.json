@@ -17,6 +17,7 @@
     "@react-native-google-signin/google-signin": "^7.0.4",
     "@react-navigation/native": "^5.9.8",
     "@react-navigation/stack": "^5.14.9",
+    "@rootstrap/redux-tools": "^1.0.0",
     "axios": "^0.26.0",
     "react": "17.0.2",
     "react-native": "0.67.2",
@@ -24,7 +25,9 @@
     "react-native-gesture-handler": "^2.2.0",
     "react-native-reanimated": "^2.3.1",
     "react-native-safe-area-context": "^3.3.2",
-    "react-native-screens": "^3.10.2"
+    "react-native-screens": "^3.10.2",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -33,6 +36,7 @@
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.66.15",
+    "@types/react-redux": "^7.1.22",
     "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
@@ -41,7 +45,9 @@
     "eslint": "^7.14.0",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.66.2",
+    "react-native-flipper": "^0.136.0",
     "react-test-renderer": "17.0.2",
+    "redux-flipper": "^2.0.1",
     "typescript": "^4.4.4"
   },
   "resolutions": {
@@ -69,10 +75,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 80,
-        "functions": 75,
-        "lines": 90,
-        "statements": 80
+        "branches": 85,
+        "functions": 85,
+        "lines": 85,
+        "statements": 85
       }
     }
   }

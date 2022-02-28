@@ -55,11 +55,12 @@ const mockCountryDailyDate = [
   },
 ];
 
-jest.mock('../../src/services/covid19', () => ({
+jest.mock('axios', () => ({
   __esModule: true,
   default: {
-    getCountries: async () => mockCountries,
-    getCountryDailyData: async () => mockCountryDailyDate,
+    create: () => ({
+      get: (url: string) => url.indexOf('/countries') > 0 ? mockCountries : mockCountryDailyDate,
+    }),
   },
 }));
 

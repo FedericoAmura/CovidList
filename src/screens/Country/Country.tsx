@@ -1,25 +1,30 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 import { object } from 'prop-types';
 
+import { getDailyData } from '../../actions/covid';
 import DailyDataItem from '../../components/DailyData';
 import FlatTable from '../../components/FlatTable';
 import testIds from '../../constants/testIds';
-import covidService, { DailyData } from '../../services/covid19';
+import { DailyData } from '../../services/covid';
 
 // @ts-ignore
-const Country = ({ navigation, route: { params: { title, slug } } }) => {
-  const [countryDaysData, setCountryDaysData] = useState<DailyData[]>([]);
+const Country = ({ navigation, route: { params: { name, slug } } }) => {
+  const dispatch = useDispatch();
 
   useEffect(() => {
     navigation.setOptions({
-      headerTitle: title,
+      headerTitle: name,
     });
   }, []);
 
   useEffect(() => {
-    covidService.getCountryDailyData(slug).then(setCountryDaysData);
-  }, [setCountryDaysData]);
+    dispatch(getDailyData(slug));
+  }, [dispatch]);
+
+  // @ts-ignore
+  const countryDaysData = useSelector(({ covid }) => covid.dailyData[name], shallowEqual) || [];
 
   const countryDayKeyExtractor = useCallback((dailyData: DailyData) => dailyData.Date, [])
   const renderCountryDayItem = useCallback(({ item }) => <DailyDataItem dailyData={item} />,[]);
