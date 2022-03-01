@@ -2,6 +2,8 @@ import React, { useCallback, useState } from 'react';
 import { Button, FlatList, StyleSheet, View, ViewPropTypes } from 'react-native';
 import { array, func } from 'prop-types';
 
+import testIds from '../../constants/testIds';
+
 // @ts-ignore
 const FlatTable = ({ style = {}, data: parentData, fields, keyExtractor, renderItem}) => {
   const data = [...parentData];
@@ -13,7 +15,7 @@ const FlatTable = ({ style = {}, data: parentData, fields, keyExtractor, renderI
     const buttonTitle = selectedField.name !== field.name ? field.name : `${field.name} (${sortingField.descending ? 'desc' : 'asc'})`;
     return (
       <View key={field.name} style={styles.headerButtons}>
-        <Button title={buttonTitle} onPress={() => sortData(i)} />
+        <Button testID={testIds.FLAT_TABLE_COMPONENT.headerButton} title={buttonTitle} onPress={() => sortData(i)} />
       </View>
     );
   });
@@ -22,11 +24,11 @@ const FlatTable = ({ style = {}, data: parentData, fields, keyExtractor, renderI
   data.sort((a, b) => (sortingField.descending ? 1 : -1) * fields[sortingField.field].comparator(a, b));
 
   return (
-    <View style={style}>
+    <View testID={testIds.FLAT_TABLE_COMPONENT.container} style={style}>
       <View style={styles.header}>
         {headerButtons}
       </View>
-      <FlatList style={styles.dailyList} data={data} keyExtractor={keyExtractor} renderItem={renderItem} />
+      <FlatList testID={testIds.FLAT_TABLE_COMPONENT.dataRows} style={styles.dailyList} data={data} keyExtractor={keyExtractor} renderItem={renderItem} />
     </View>
   );
 };

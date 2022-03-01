@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text } from 'react-native';
-import renderer, { ReactTestRenderer } from 'react-test-renderer';
+import { render as renderComponent, RenderAPI, waitFor } from '@testing-library/react-native';
 
 import DailyDataItem from '../../../src/components/DailyData';
+import testIds from '../../../src/constants/testIds';
 
 const MOCK_DAILY_DATA = {
   Cases: 1,
@@ -18,23 +18,25 @@ const MOCK_DAILY_DATA = {
 };
 
 describe('DailyDataItem', () => {
-  let render: ReactTestRenderer;
+  let render: RenderAPI;
 
-  beforeEach(() => {
-    render = renderer.create(<DailyDataItem dailyData={MOCK_DAILY_DATA} />)
+  beforeEach(async () => {
+    await waitFor(() => {
+      render = renderComponent(<DailyDataItem dailyData={MOCK_DAILY_DATA} />);
+    });
   });
 
   it('Should render correctly', () => {
-    const dailyDataItem = render.root.findByType(DailyDataItem);
+    const dailyDataItem = render.getByTestId(testIds.DAILY_DATA_COMPONENT.container);
     expect(dailyDataItem).toBeTruthy();
   });
 
   it('Should properly show the date and cases', () => {
-    const [dateComponent, casesComponent] = render.root.findAllByType(Text);
-
+    const dateComponent = render.getByTestId(testIds.DAILY_DATA_COMPONENT.date);
     expect(dateComponent).toBeTruthy();
     expect(dateComponent.props.children).toEqual('2020-03-08');
 
+    const casesComponent = render.getByTestId(testIds.DAILY_DATA_COMPONENT.cases);
     expect(casesComponent).toBeTruthy();
     expect(casesComponent.props.children).toEqual(1);
   });

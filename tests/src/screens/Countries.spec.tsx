@@ -1,6 +1,5 @@
 import React from 'react';
-import { FlatList } from 'react-native';
-import { act, ReactTestRenderer } from 'react-test-renderer';
+import { fireEvent, RenderAPI, waitFor } from '@testing-library/react-native';
 
 import { mockInitialStore } from '../configureStore';
 import { renderWithNavigation } from '../../helpers';
@@ -10,35 +9,35 @@ import Countries from '../../../src/screens/Countries';
 import Country from '../../../src/screens/Country';
 
 describe('CountriesScreen', () => {
-  let render: ReactTestRenderer;
+  let render: RenderAPI;
 
-  beforeEach(() => {
-    render = renderWithNavigation(Countries, null, [
-      {
-        name: screens.COUNTRY,
-        component: Country,
-      }
-    ],
-      mockInitialStore);
+  beforeEach(async () => {
+    await waitFor(() => {
+      render = renderWithNavigation(Countries, null, [
+          {
+            name: screens.COUNTRY,
+            component: Country,
+          }
+        ],
+        mockInitialStore);
+    });
   });
 
   it('Should render correctly', () => {
-    const countriesScreen = render.root.findByProps({ testID: testIds.COUNTRIES_SCREEN.container });
+    const countriesScreen = render.getByTestId(testIds.COUNTRIES_SCREEN.container);
     expect(countriesScreen).toBeTruthy();
   });
 
   it('Should render countries list', () => {
-    const countriesList = render.root.findByType(FlatList);
+    const countriesList = render.getByTestId(testIds.COUNTRIES_SCREEN.countryList);
     expect(countriesList).toBeTruthy();
   });
 
-  it('Should navigate to CountryScreen upon click', () => {
-    const jordanCountryButton = render.root.findByProps({ testID: testIds.COUNTRY_ITEM_COMPONENT.container });
+  it('Should navigate to CountryScreen upon click', async () => {
+    const jordanCountryButton = render.getByTestId(testIds.COUNTRY_ITEM_COMPONENT.container);
+    fireEvent.press(jordanCountryButton);
 
-    act(() => {
-      jordanCountryButton.props.onPress();
-    });
-    const countryScreen = render.root.findByProps({ testID: testIds.COUNTRY_SCREEN.container });
+    const countryScreen = render.getByTestId(testIds.COUNTRY_SCREEN.container);
     expect(countryScreen).toBeTruthy();
   });
 });

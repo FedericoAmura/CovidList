@@ -1,11 +1,11 @@
 import React from 'react';
 import 'react-native';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react-native';
 
 import App from '../../src/App';
 
 describe('App', () => {
   it('Should render correctly', () => {
-    renderer.create(<App />);
+    render(<App />);
   });
 });

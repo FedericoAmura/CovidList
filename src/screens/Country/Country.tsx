@@ -26,7 +26,7 @@ const Country = ({ navigation, route: { params: { name, slug } } }) => {
   // @ts-ignore
   const countryDaysData = useSelector(({ covid }) => covid.dailyData[name], shallowEqual) || [];
 
-  const countryDayKeyExtractor = useCallback((dailyData: DailyData) => dailyData.Date, [])
+  const countryDayKeyExtractor = useCallback((dailyData: DailyData) => dailyData.Date, []);
   const renderCountryDayItem = useCallback(({ item }) => <DailyDataItem dailyData={item} />,[]);
   const fields = useMemo(() => [{
     name: 'Date',

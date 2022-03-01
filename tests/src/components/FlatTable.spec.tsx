@@ -1,9 +1,10 @@
 import React from 'react';
-import { Button, Text } from 'react-native';
-import renderer, { act, ReactTestRenderer } from 'react-test-renderer';
+import { Text } from 'react-native';
+import { fireEvent, render as renderComponent, RenderAPI, waitFor } from '@testing-library/react-native';
 
 import DailyDataItem from '../../../src/components/DailyData';
 import FlatTable from '../../../src/components/FlatTable';
+import testIds from '../../../src/constants/testIds';
 
 const MOCK_DATA = [{
   Cases: 1,
@@ -35,49 +36,48 @@ const MOCK_KEY_EXTRACTOR = (item: any) => item.Date;
 const MOCK_RENDER_ITEM = ({ item }) => <DailyDataItem dailyData={item} />;
 
 describe('FlatTable', () => {
-  let render: ReactTestRenderer;
+  let render: RenderAPI;
 
-  beforeEach(() => {
-    render = renderer.create(<FlatTable data={MOCK_DATA} fields={MOCK_FIELDS} keyExtractor={MOCK_KEY_EXTRACTOR} renderItem={MOCK_RENDER_ITEM} />)
+  beforeEach(async () => {
+    await waitFor(() => {
+      render = renderComponent(<FlatTable data={MOCK_DATA} fields={MOCK_FIELDS} keyExtractor={MOCK_KEY_EXTRACTOR} renderItem={MOCK_RENDER_ITEM} />);
+    });
   });
 
   it('Should render correctly', () => {
-    const flatTable = render.root.findByType(FlatTable);
+    const flatTable = render.getByTestId(testIds.FLAT_TABLE_COMPONENT.container);
     expect(flatTable).toBeTruthy();
   });
 
   it('Should render header buttons', () => {
-    const [dateButton, casesButton] = render.root.findAllByType(Button);
+    const [dateButton, casesButton] = render.getAllByTestId(testIds.FLAT_TABLE_COMPONENT.headerButton);
 
     expect(dateButton).toBeTruthy();
     expect(casesButton).toBeTruthy();
   });
 
   it('Should render data rows', () => {
-    const dailyDataRows = render.root.findAllByType(DailyDataItem);
+    const dataRows = render.getByTestId(testIds.FLAT_TABLE_COMPONENT.dataRows);
+    expect(dataRows).toBeTruthy();
 
+    const dailyDataRows = render.getAllByTestId(testIds.DAILY_DATA_COMPONENT.container);
     expect(dailyDataRows).toBeTruthy();
     expect(dailyDataRows).toHaveLength(4);
   });
 
   it('Should sort data rows when clicking header buttons', () => {
-    const [, casesButton] = render.root.findAllByType(Button);
+    const [, casesButton] = render.getAllByTestId(testIds.FLAT_TABLE_COMPONENT.headerButton);
+    fireEvent.press(casesButton);
 
-    act(() => {
-      casesButton.props.onPress();
-    });
-
-    let dailyDataRows = render.root.findAllByType(DailyDataItem);
+    let dailyDataRows = render.getAllByTestId(testIds.DAILY_DATA_COMPONENT.container);
     expect(dailyDataRows.map(row => {
       const rowCasesText = row.findAllByType(Text)[1];
       return rowCasesText.props.children;
     })).toEqual([4, 3, 2, 1]);
 
-    act(() => {
-      casesButton.props.onPress();
-    });
+    fireEvent.press(casesButton);
 
-    dailyDataRows = render.root.findAllByType(DailyDataItem);
+    dailyDataRows = render.getAllByTestId(testIds.DAILY_DATA_COMPONENT.container);
     expect(dailyDataRows.map(row => {
       const rowCasesText = row.findAllByType(Text)[1];
       return rowCasesText.props.children;

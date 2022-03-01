@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactTestRenderer } from 'react-test-renderer';
+import { RenderAPI, waitFor } from '@testing-library/react-native';
 
 import { mockInitialStore } from '../configureStore';
 import { renderWithNavigation } from '../../helpers';
@@ -9,20 +9,22 @@ import screens from '../../../src/constants/screens';
 import Country from '../../../src/screens/Country';
 
 describe('CountriesNavigator', () => {
-  let render: ReactTestRenderer;
+  let render: RenderAPI;
 
-  beforeEach(() => {
-    render = renderWithNavigation(Countries, null, [
-        {
-          name: screens.COUNTRY,
-          component: Country,
-        }
-      ],
-      mockInitialStore);
+  beforeEach(async () => {
+    await waitFor(() => {
+      render = renderWithNavigation(Countries, null, [
+          {
+            name: screens.COUNTRY,
+            component: Country,
+          }
+        ],
+        mockInitialStore);
+    });
   });
 
   it('Should render countries screen when starting', () => {
-    const countriesScreen = render.root.findByProps({ testID: testIds.COUNTRIES_SCREEN.container });
+    const countriesScreen = render.getByTestId(testIds.COUNTRIES_SCREEN.container);
     expect(countriesScreen).toBeTruthy();
   });
 });

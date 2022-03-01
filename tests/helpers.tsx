@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import configureStore from '../src/configureStore';
@@ -34,5 +34,5 @@ export const renderWithNavigation = (component: React.ComponentType<any>, compon
     </Provider>
   );
 
-  return renderer.create(<App />)
+  return { ...render(<App />) };
 };

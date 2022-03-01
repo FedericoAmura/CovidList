@@ -9,8 +9,8 @@ import testIds from '../../constants/testIds';
 const CountryItem = ({ country, onPress }) => {
   return (
     <TouchableOpacity testID={testIds.COUNTRY_ITEM_COMPONENT.container} style={styles.container} onPress={onPress}>
-      <Text style={styles.text}>{`${country.Country} (${country.Slug})`}</Text>
-      <Image source={ArrowIcon} />
+      <Text testID={testIds.COUNTRY_ITEM_COMPONENT.text} style={styles.text}>{`${country.Country} (${country.Slug})`}</Text>
+      <Image testID={testIds.COUNTRY_ITEM_COMPONENT.arrow} source={ArrowIcon} />
     </TouchableOpacity>
   );
 };

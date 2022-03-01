@@ -24,12 +24,12 @@ const Countries = ({ navigation }) => {
     navigation.navigate(screens.COUNTRY, { name, slug });
   }, [navigation]);
 
-  const countryKeyExtractor = useCallback((country: Country) => country.Slug, [])
+  const countryKeyExtractor = useCallback((country: Country) => country.Slug, []);
   const renderCountryItem = useCallback(({ item }) => <CountryItem country={item} onPress={() => goToCountryScreen(item.Country, item.Slug)} />,[]);
 
   return (
     <View style={styles.container} testID={testIds.COUNTRIES_SCREEN.container}>
-      <FlatList style={styles.countryList} data={countries} keyExtractor={countryKeyExtractor} renderItem={renderCountryItem} />
+      <FlatList testID={testIds.COUNTRIES_SCREEN.countryList} style={styles.countryList} data={countries} keyExtractor={countryKeyExtractor} renderItem={renderCountryItem} />
     </View>
   );
 }

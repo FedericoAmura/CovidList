@@ -2,12 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { object } from 'prop-types';
 
+import testIds from '../../constants/testIds';
+
 // @ts-ignore
 const DailyDataItem = ({ dailyData }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{dailyData.Date.substring(0, 10)}</Text>
-      <Text style={styles.text}>{dailyData.Cases}</Text>
+    <View testID={testIds.DAILY_DATA_COMPONENT.container} style={styles.container}>
+      <Text testID={testIds.DAILY_DATA_COMPONENT.date} style={styles.text}>{dailyData.Date.substring(0, 10)}</Text>
+      <Text testID={testIds.DAILY_DATA_COMPONENT.cases} style={styles.text}>{dailyData.Cases}</Text>
     </View>
   );
 };

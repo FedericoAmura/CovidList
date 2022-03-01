@@ -59,7 +59,7 @@ jest.mock('axios', () => ({
   __esModule: true,
   default: {
     create: () => ({
-      get: (url: string) => url.indexOf('/countries') > 0 ? mockCountries : mockCountryDailyDate,
+      get: (url: string) => ({ data: url.indexOf('/countries') > 0 ? mockCountries : mockCountryDailyDate }),
     }),
   },
 }));
