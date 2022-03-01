@@ -37,7 +37,9 @@ describe('CountriesScreen', () => {
     const jordanCountryButton = render.getByTestId(testIds.COUNTRY_ITEM_COMPONENT.container);
     fireEvent.press(jordanCountryButton);
 
-    const countryScreen = render.getByTestId(testIds.COUNTRY_SCREEN.container);
-    expect(countryScreen).toBeTruthy();
+    await waitFor(() => {
+      const countryScreen = render.getByTestId(testIds.COUNTRY_SCREEN.container);
+      expect(countryScreen).toBeTruthy();
+    });
   });
 });
