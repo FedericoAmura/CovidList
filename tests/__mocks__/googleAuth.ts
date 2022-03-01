@@ -30,12 +30,12 @@ jest.mock('@react-native-firebase/auth', () => {
       onAuthStateChanged: (callback: () => void) => mockAuthStateChangedCallback = callback,
       signInWithCredential: async () => {
         if (mockAuthStateChangedCallback) {
-          await mockAuthStateChangedCallback(MOCK_USER);
+          mockAuthStateChangedCallback(MOCK_USER);
         }
       },
       signOut: async () => {
         if (mockAuthStateChangedCallback) {
-          await mockAuthStateChangedCallback(null);
+          mockAuthStateChangedCallback(null);
         }
       },
     }),

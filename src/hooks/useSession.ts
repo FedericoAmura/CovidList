@@ -16,8 +16,8 @@ const useSession = () => {
   }, [setUser]);
 
   // @ts-ignore
-  const onAuthStateChanged: FirebaseAuthTypes.AuthListenerCallback = useCallback(async (user: FirebaseAuthTypes.User) => {
-    await EncryptedStorage.setItem('user', JSON.stringify(user));
+  const onAuthStateChanged: FirebaseAuthTypes.AuthListenerCallback = useCallback((user: FirebaseAuthTypes.User) => {
+    EncryptedStorage.setItem('user', JSON.stringify(user)).catch(console.error);
     setUser(user);
   }, [setUser]);
 
