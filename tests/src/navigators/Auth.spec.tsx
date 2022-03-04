@@ -1,10 +1,10 @@
 import React from 'react';
 import { RenderAPI, waitFor } from '@testing-library/react-native';
 
-import { setSignedInStatus } from '../../__mocks__/googleAuth';
-import { renderWithNavigation } from '../../helpers';
-import Auth from '../../../src/navigators/Auth';
-import testIds from '../../../src/constants/testIds';
+import { setSignedInStatus } from '#/__mocks__/googleAuth';
+import { renderWithNavigation } from '#/helpers';
+import Auth from '@/navigators/Auth';
+import testIds from '@/constants/testIds';
 
 describe('AuthNavigator', () => {
   let render: RenderAPI;

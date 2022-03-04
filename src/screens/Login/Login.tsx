@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
-import testIds from '../../constants/testIds';
-import useSession from '../../hooks/useSession';
+import testIds from '@/constants/testIds';
+import useSession from '@/hooks/useSession';
 
 const Login = () => {
   const { signIn } = useSession();

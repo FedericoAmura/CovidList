@@ -1,8 +1,8 @@
 import React from 'react';
 import { fireEvent, render as renderComponent, RenderAPI, waitFor } from '@testing-library/react-native';
 
-import CountryItem from '../../../src/components/CountryItem';
-import testIds from '../../../src/constants/testIds';
+import CountryItem from '@/components/CountryItem';
+import testIds from '@/constants/testIds';
 
 const MOCK_COUNTRY = {
   Country: "Jordan",

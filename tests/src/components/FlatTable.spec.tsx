@@ -2,9 +2,9 @@ import React from 'react';
 import { Text } from 'react-native';
 import { fireEvent, render as renderComponent, RenderAPI, waitFor } from '@testing-library/react-native';
 
-import DailyDataItem from '../../../src/components/DailyData';
-import FlatTable from '../../../src/components/FlatTable';
-import testIds from '../../../src/constants/testIds';
+import DailyDataItem from '@/components/DailyData';
+import FlatTable from '@/components/FlatTable';
+import testIds from '@/constants/testIds';
 
 const MOCK_DATA = [{
   Cases: 1,

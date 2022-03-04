@@ -2,8 +2,8 @@ import React from 'react';
 import { Text } from 'react-native';
 import { render as renderComponent, RenderAPI, waitFor } from '@testing-library/react-native';
 
-import GridView from '../../../src/components/GridView';
-import testIds from '../../../src/constants/testIds';
+import GridView from '@/components/GridView';
+import testIds from '@/constants/testIds';
 
 describe('GridView', () => {
   let render: RenderAPI;

@@ -1,12 +1,12 @@
 import React from 'react';
 import { RenderAPI, waitFor } from '@testing-library/react-native';
 
-import { mockInitialStore } from '../configureStore';
-import { renderWithNavigation } from '../../helpers';
-import screens from '../../../src/constants/screens';
-import testIds from '../../../src/constants/testIds';
-import Country from '../../../src/screens/Country';
-import Countries from '../../../src/screens/Countries';
+import { mockInitialStore } from '#/src/configureStore';
+import { renderWithNavigation } from '#/helpers';
+import screens from '@/constants/screens';
+import testIds from '@/constants/testIds';
+import Country from '@/screens/Country';
+import Countries from '@/screens/Countries';
 
 describe('CountryScreen', () => {
   let render: RenderAPI;

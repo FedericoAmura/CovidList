@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { object } from 'prop-types';
 
-import testIds from '../../constants/testIds';
+import testIds from '@/constants/testIds';
 
 // @ts-ignore
 const DailyDataItem = ({ dailyData }) => {

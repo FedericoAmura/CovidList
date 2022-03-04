@@ -3,11 +3,11 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 import { object } from 'prop-types';
 
-import { getDailyData } from '../../actions/covid';
-import DailyDataItem from '../../components/DailyData';
-import FlatTable from '../../components/FlatTable';
-import testIds from '../../constants/testIds';
-import { DailyData } from '../../services/covid';
+import { getDailyData } from '@/actions/covid';
+import DailyDataItem from '@/components/DailyData';
+import FlatTable from '@/components/FlatTable';
+import testIds from '@/constants/testIds';
+import { DailyData } from '@/services/covid';
 
 // @ts-ignore
 const Country = ({ navigation, route: { params: { name, slug } } }) => {

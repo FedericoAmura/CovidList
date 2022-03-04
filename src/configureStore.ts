@@ -2,7 +2,7 @@ import { applyMiddleware, createStore, Store } from 'redux';
 // @ts-ignore
 import { thunkMiddleware } from '@rootstrap/redux-tools';
 
-import rootReducer from './reducers';
+import rootReducer from '@/reducers';
 
 const middlewares = [thunkMiddleware];
 

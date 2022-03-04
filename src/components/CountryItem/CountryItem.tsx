@@ -2,8 +2,8 @@ import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { func, object } from 'prop-types';
 
-import ArrowIcon from '../../assets/icons/ArrowIcon.png';
-import testIds from '../../constants/testIds';
+import ArrowIcon from '@/assets/icons/ArrowIcon.png';
+import testIds from '@/constants/testIds';
 
 // @ts-ignore
 const CountryItem = ({ country, onPress }) => {

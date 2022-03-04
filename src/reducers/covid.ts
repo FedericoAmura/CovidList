@@ -1,7 +1,7 @@
 // @ts-ignore
 import { createReducer } from '@rootstrap/redux-tools';
 
-import { getCountries, getDailyData } from '../actions/covid';
+import { getCountries, getDailyData } from '@/actions/covid';
 
 const initialState = {
   countries: [],

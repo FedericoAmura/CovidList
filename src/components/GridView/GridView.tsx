@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { node, number as numberProp } from 'prop-types';
 
-import testIds from '../../constants/testIds';
+import testIds from '@/constants/testIds';
 
 // @ts-ignore
 const GridView = ({ children, rows = 10, columns = 10 }) => {

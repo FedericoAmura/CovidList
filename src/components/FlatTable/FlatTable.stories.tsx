@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react-native';
 import { text } from '@storybook/addon-knobs';
 
 import FlatTable from './FlatTable';
-import DailyDataItem from '../DailyData';
+import DailyDataItem from '@/components/DailyData';
 
 storiesOf('Components/FlatTable', module)
   .add('Table of daily data', () => {

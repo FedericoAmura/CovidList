@@ -1,7 +1,7 @@
 // @ts-ignore
 import { createThunk } from '@rootstrap/redux-tools';
 
-import covidService from '../services/covid';
+import covidService from '@/services/covid';
 
 export const getCountries = createThunk(
   'GET_COUNTRIES',

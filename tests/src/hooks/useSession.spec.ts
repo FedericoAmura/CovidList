@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import useSession from '../../../src/hooks/useSession';
+import useSession from '@/hooks/useSession';
 
 // @ts-ignore
 const MOCK_USER: FirebaseAuthTypes.User = {

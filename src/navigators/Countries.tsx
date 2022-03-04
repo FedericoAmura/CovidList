@@ -2,10 +2,10 @@ import React from 'react';
 import { Button } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import screens from '../constants/screens';
-import useSession from '../hooks/useSession';
-import CountriesScreen from '../screens/Countries';
-import CountryScreen from '../screens/Country';
+import screens from '@/constants/screens';
+import useSession from '@/hooks/useSession';
+import CountriesScreen from '@/screens/Countries';
+import CountryScreen from '@/screens/Country';
 
 const Stack = createStackNavigator();
 

@@ -2,8 +2,8 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 
-import configureStore from './configureStore';
-import AuthNavigator from './navigators/Auth';
+import configureStore from '@/configureStore';
+import AuthNavigator from '@/navigators/Auth';
 
 const store = configureStore();
 

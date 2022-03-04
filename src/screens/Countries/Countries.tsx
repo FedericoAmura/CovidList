@@ -3,11 +3,11 @@ import { FlatList, StyleSheet, View } from 'react-native';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { object } from 'prop-types';
 
-import { getCountries } from '../../actions/covid';
-import CountryItem from '../../components/CountryItem';
-import screens from '../../constants/screens';
-import testIds from '../../constants/testIds';
-import { Country } from '../../services/covid';
+import { getCountries } from '@/actions/covid';
+import CountryItem from '@/components/CountryItem';
+import screens from '@/constants/screens';
+import testIds from '@/constants/testIds';
+import { Country } from '@/services/covid';
 
 // @ts-ignore
 const Countries = ({ navigation }) => {

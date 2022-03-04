@@ -1,8 +1,8 @@
 import React from 'react';
 import { render as renderComponent, RenderAPI, waitFor } from '@testing-library/react-native';
 
-import DailyDataItem from '../../../src/components/DailyData';
-import testIds from '../../../src/constants/testIds';
+import DailyDataItem from '@/components/DailyData';
+import testIds from '@/constants/testIds';
 
 const MOCK_DAILY_DATA = {
   Cases: 1,

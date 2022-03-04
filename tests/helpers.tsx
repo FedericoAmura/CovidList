@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { render } from '@testing-library/react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import configureStore from '../src/configureStore';
+import configureStore from '@/configureStore';
 
 const TEST_SCREEN = 'TestScreen';
 const Stack = createStackNavigator();

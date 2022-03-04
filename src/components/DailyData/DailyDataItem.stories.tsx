@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { date, number } from '@storybook/addon-knobs';
 
-import GridView from '../GridView';
+import GridView from '@/components/GridView';
 import DailyDataItem from './DailyDataItem';
 
 storiesOf('Components/DailyDataItem', module)

@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { Button, FlatList, StyleSheet, View, ViewPropTypes } from 'react-native';
 import { array, func } from 'prop-types';
 
-import testIds from '../../constants/testIds';
+import testIds from '@/constants/testIds';
 
 const DEFAULT_STYLE = {
   flex: 1,

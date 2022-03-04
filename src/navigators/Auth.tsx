@@ -1,11 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import navigators from '../constants/navigators';
-import screens from '../constants/screens';
-import useSession from '../hooks/useSession';
-import Login from '../screens/Login';
-import Countries from './Countries';
+import navigators from '@/constants/navigators';
+import screens from '@/constants/screens';
+import useSession from '@/hooks/useSession';
+import Login from '@/screens/Login';
+import Countries from '@/navigators/Countries';
 
 const Stack = createStackNavigator();
 
