@@ -4,8 +4,12 @@ import { array, func } from 'prop-types';
 
 import testIds from '../../constants/testIds';
 
+const DEFAULT_STYLE = {
+  flex: 1,
+};
+
 // @ts-ignore
-const FlatTable = ({ style = {}, data: parentData, fields, keyExtractor, renderItem}) => {
+const FlatTable = ({ style = DEFAULT_STYLE, data: parentData, fields, keyExtractor, renderItem}) => {
   const data = [...parentData];
 
   const [sortingField, setSortingField] = useState({ field: 0, descending: true });

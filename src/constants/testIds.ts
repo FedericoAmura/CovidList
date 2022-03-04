@@ -33,4 +33,11 @@ export default {
     date: 'daily-data-date',
     cases: 'daily-data-cases',
   },
+
+  GRID_VIEW: {
+    container: 'grid-view-container',
+    grid: 'grid-view-grid',
+    square: 'grid-view-square',
+    children: 'grid-view-children'
+  },
 };
