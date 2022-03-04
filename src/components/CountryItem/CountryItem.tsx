@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { func, object } from 'prop-types';
 
@@ -32,4 +32,4 @@ CountryItem.propTypes = {
   onPress: func.isRequired,
 };
 
-export default CountryItem;
+export default memo(CountryItem);

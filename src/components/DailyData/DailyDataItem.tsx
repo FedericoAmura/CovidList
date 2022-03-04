@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { object } from 'prop-types';
 
@@ -31,4 +31,4 @@ DailyDataItem.propTypes = {
   dailyData: object.isRequired,
 };
 
-export default DailyDataItem;
+export default memo(DailyDataItem);
