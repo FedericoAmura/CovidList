@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useMemo } from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+// @ts-ignore
+import { useLoading } from '@rootstrap/redux-tools';
 import { object } from 'prop-types';
 
 import { getDailyData } from '@/actions/covid';
@@ -8,10 +10,12 @@ import DailyDataItem from '@/components/DailyData';
 import FlatTable from '@/components/FlatTable';
 import testIds from '@/constants/testIds';
 import { DailyData } from '@/services/covid';
+import LoadingBar from '@/components/LoadingBar';
 
 // @ts-ignore
 const Country = ({ navigation, route: { params: { name, slug } } }) => {
   const dispatch = useDispatch();
+  const isLoading = useLoading(getDailyData);
 
   useEffect(() => {
     navigation.setOptions({
@@ -40,6 +44,7 @@ const Country = ({ navigation, route: { params: { name, slug } } }) => {
 
   return (
     <View style={styles.container} testID={testIds.COUNTRY_SCREEN.container}>
+      {isLoading && <LoadingBar />}
       <FlatTable style={styles.table} data={countryDaysData} fields={fields} keyExtractor={countryDayKeyExtractor} renderItem={renderCountryDayItem} />
     </View>
   );

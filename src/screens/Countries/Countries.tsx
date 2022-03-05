@@ -1,10 +1,13 @@
 import React, { useCallback, useEffect } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+// @ts-ignore
+import { useLoading } from '@rootstrap/redux-tools';
 import { object } from 'prop-types';
 
 import { getCountries } from '@/actions/covid';
 import CountryItem from '@/components/CountryItem';
+import LoadingBar from '@/components/LoadingBar';
 import screens from '@/constants/screens';
 import testIds from '@/constants/testIds';
 import { Country } from '@/services/covid';
@@ -12,6 +15,7 @@ import { Country } from '@/services/covid';
 // @ts-ignore
 const Countries = ({ navigation }) => {
   const dispatch = useDispatch();
+  const isLoading = useLoading(getCountries);
 
   useEffect(() => {
     dispatch(getCountries());
@@ -29,6 +33,7 @@ const Countries = ({ navigation }) => {
 
   return (
     <View style={styles.container} testID={testIds.COUNTRIES_SCREEN.container}>
+      {isLoading && <LoadingBar />}
       <FlatList testID={testIds.COUNTRIES_SCREEN.countryList} style={styles.countryList} data={countries} keyExtractor={countryKeyExtractor} renderItem={renderCountryItem} />
     </View>
   );

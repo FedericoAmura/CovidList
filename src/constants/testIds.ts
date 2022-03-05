@@ -40,4 +40,8 @@ export default {
     square: 'grid-view-square',
     children: 'grid-view-children'
   },
+
+  LOADING_BAR: {
+    container: 'loading-bar-container',
+  },
 };
