@@ -2,14 +2,15 @@ import React, { memo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { object } from 'prop-types';
 
+import { dimensions, styles as appStyles } from '@/constants/styles';
 import testIds from '@/constants/testIds';
 
 // @ts-ignore
 const DailyDataItem = ({ dailyData }) => {
   return (
     <View testID={testIds.DAILY_DATA_COMPONENT.container} style={styles.container}>
-      <Text testID={testIds.DAILY_DATA_COMPONENT.date} style={styles.text}>{dailyData.Date.substring(0, 10)}</Text>
-      <Text testID={testIds.DAILY_DATA_COMPONENT.cases} style={styles.text}>{dailyData.Cases}</Text>
+      <Text testID={testIds.DAILY_DATA_COMPONENT.date} style={[appStyles.TEXT.COMMON, styles.data]}>{dailyData.Date.substring(0, 10)}</Text>
+      <Text testID={testIds.DAILY_DATA_COMPONENT.cases} style={[appStyles.TEXT.COMMON, styles.data]}>{dailyData.Cases}</Text>
     </View>
   );
 };
@@ -17,12 +18,12 @@ const DailyDataItem = ({ dailyData }) => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    paddingVertical: 16,
+    paddingVertical: dimensions.SPACING.X2,
     flexDirection: 'row',
+    justifyContent: 'space-around',
   },
-  text: {
-    color: '#282828',
-    flexGrow: 1,
+  data: {
+    width: '50%',
     textAlign: 'center',
   },
 });

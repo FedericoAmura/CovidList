@@ -3,13 +3,14 @@ import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { func, object } from 'prop-types';
 
 import ArrowIcon from '@/assets/icons/ArrowIcon.png';
+import { dimensions, styles as appStyles } from '@/constants/styles';
 import testIds from '@/constants/testIds';
 
 // @ts-ignore
 const CountryItem = ({ country, onPress }) => {
   return (
     <TouchableOpacity testID={testIds.COUNTRY_ITEM_COMPONENT.container} style={styles.container} onPress={onPress}>
-      <Text testID={testIds.COUNTRY_ITEM_COMPONENT.text} style={styles.text}>{`${country.Country} (${country.Slug})`}</Text>
+      <Text testID={testIds.COUNTRY_ITEM_COMPONENT.text} style={appStyles.TEXT.COMMON}>{`${country.Country} (${country.Slug})`}</Text>
       <Image testID={testIds.COUNTRY_ITEM_COMPONENT.arrow} source={ArrowIcon} />
     </TouchableOpacity>
   );
@@ -18,12 +19,9 @@ const CountryItem = ({ country, onPress }) => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    padding: 32,
+    padding: dimensions.SPACING.X4,
     flexDirection: 'row',
     justifyContent: 'space-between',
-  },
-  text: {
-    color: '#282828',
   },
 });
 

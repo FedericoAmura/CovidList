@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { node, number as numberProp } from 'prop-types';
 
+import { colors } from '@/constants/styles';
 import testIds from '@/constants/testIds';
 
 // @ts-ignore
@@ -26,7 +27,7 @@ const GridView = ({ children, rows = 10, columns = 10 }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.BRAND.WHITE,
   },
   grid: {
     flex: 1,
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   square: {
     flex: 1,
     borderWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: colors.BRAND.GRAY,
   },
 });
 

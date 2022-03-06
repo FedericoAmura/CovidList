@@ -1,6 +1,8 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+import AppImage from '@/assets/icons/AppIcon.png';
+import { colors, dimensions, styles as appStyles } from '@/constants/styles';
 import testIds from '@/constants/testIds';
 import useSession from '@/hooks/useSession';
 
@@ -9,12 +11,20 @@ const Login = () => {
 
   return (
     <View style={styles.container} testID={testIds.LOGIN_SCREEN.container}>
-      <Text style={styles.text}>Welcome to Covid List</Text>
+      <View style={styles.title}>
+        <Image source={AppImage} />
+        <Text style={appStyles.TEXT.INTRO}>COVID CASES</Text>
+      </View>
 
-      <Button
-        title="Sign in with Google"
-        onPress={signIn}
-      />
+      <View style={styles.logins}>
+        <TouchableOpacity
+          testID={testIds.LOGIN_SCREEN.GOOGLE_LOGIN}
+          onPress={signIn}
+          style={[appStyles.BUTTON.PRIMARY, styles.googleLoginButton]}
+        >
+          <Text style={appStyles.TEXT.OVER}>Sign in with Google</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -22,12 +32,25 @@ const Login = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: dimensions.SPACING.X4,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text: {
-    color: '#282828',
+  title: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexGrow: 4,
   },
+  logins: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexGrow: 3,
+  },
+  googleLoginButton: {
+    backgroundColor: colors.PROVIDERS.GOOGLE,
+  }
 });
 
 Login.propTypes = {};

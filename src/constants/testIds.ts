@@ -1,6 +1,7 @@
 export default {
   LOGIN_SCREEN: {
     container: 'login-screen-container',
+    GOOGLE_LOGIN: 'login-screen-google-signin',
   },
 
   COUNTRIES_SCREEN: {

@@ -56,12 +56,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text: {
-    color: '#282828',
-  },
   table: {
-    width: '100%',
     flex: 1,
+    width: '100%',
   },
 });
 

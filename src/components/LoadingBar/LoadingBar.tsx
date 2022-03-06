@@ -1,6 +1,7 @@
 import React from 'react';
 import { Animated, Dimensions, StyleSheet, View } from 'react-native';
 
+import { colors } from '@/constants/styles';
 import testIds from '@/constants/testIds';
 
 const LoadingBar = () => {
@@ -15,7 +16,7 @@ const LoadingBar = () => {
 
   return (
     <View testID={testIds.LOADING_BAR.container} style={styles.loading}>
-      <Animated.View style={[styles.loaded, { left: start, right: 0 }]} />
+      <Animated.View style={[styles.loaded, { left: start }]} />
     </View>
   );
 };
@@ -24,12 +25,13 @@ const styles = StyleSheet.create({
   loading: {
     width: '100%',
     height: 3,
-    backgroundColor: '#000',
+    backgroundColor: colors.BRAND.BLACK,
   },
   loaded: {
     position: 'absolute',
     height: '100%',
-    backgroundColor: '#86ff2e',
+    right: 0,
+    backgroundColor: colors.BRAND.LEMON,
   },
 });
 

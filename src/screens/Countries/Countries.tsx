@@ -45,9 +45,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text: {
-    color: '#282828',
-  },
   countryList: {
     flex: 1,
     width: '100%',

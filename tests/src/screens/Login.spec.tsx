@@ -24,5 +24,8 @@ describe('LoginScreen', () => {
   it('Should render correctly', () => {
     const loginScreen = render.getByTestId(testIds.LOGIN_SCREEN.container);
     expect(loginScreen).toBeTruthy();
+
+    const googleSignIn = render.getByTestId(testIds.LOGIN_SCREEN.GOOGLE_LOGIN);
+    expect(googleSignIn).toBeTruthy();
   });
 });
