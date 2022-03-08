@@ -8,6 +8,7 @@ import { object } from 'prop-types';
 import { getDailyData } from '@/actions/covid';
 import DailyDataItem from '@/components/DailyData';
 import FlatTable from '@/components/FlatTable';
+import Separator from '@/components/Separator';
 import testIds from '@/constants/testIds';
 import { DailyData } from '@/services/covid';
 import LoadingBar from '@/components/LoadingBar';
@@ -45,7 +46,7 @@ const Country = ({ navigation, route: { params: { name, slug } } }) => {
   return (
     <View style={styles.container} testID={testIds.COUNTRY_SCREEN.container}>
       {isLoading && <LoadingBar />}
-      <FlatTable style={styles.table} data={countryDaysData} fields={fields} keyExtractor={countryDayKeyExtractor} renderItem={renderCountryDayItem} />
+      <FlatTable style={styles.table} ItemSeparatorComponent={Separator} data={countryDaysData} fields={fields} keyExtractor={countryDayKeyExtractor} renderItem={renderCountryDayItem} />
     </View>
   );
 }

@@ -46,4 +46,8 @@ export default {
   LOADING_BAR: {
     container: 'loading-bar-container',
   },
+
+  SEPARATOR: {
+    container: 'separator-container',
+  },
 };

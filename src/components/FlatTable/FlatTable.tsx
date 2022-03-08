@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View, ViewPropTypes } from 'react-native';
-import { array, func } from 'prop-types';
+import { array, func, node } from 'prop-types';
 
 import testIds from '@/constants/testIds';
 import { colors, dimensions, styles as appStyles } from '@/constants/styles';
@@ -10,7 +10,7 @@ const DEFAULT_STYLE = {
 };
 
 // @ts-ignore
-const FlatTable = ({ style = DEFAULT_STYLE, data: parentData, fields, keyExtractor, renderItem}) => {
+const FlatTable = ({ style = DEFAULT_STYLE, ItemSeparatorComponent, data: parentData, fields, keyExtractor, renderItem}) => {
   const data = [...parentData];
 
   const [sortingField, setSortingField] = useState({ field: 0, descending: true });
@@ -34,7 +34,7 @@ const FlatTable = ({ style = DEFAULT_STYLE, data: parentData, fields, keyExtract
       <View style={styles.header}>
         {headerButtons}
       </View>
-      <FlatList testID={testIds.FLAT_TABLE_COMPONENT.dataRows} style={styles.flatList} data={data} keyExtractor={keyExtractor} renderItem={renderItem} />
+      <FlatList testID={testIds.FLAT_TABLE_COMPONENT.dataRows} style={styles.flatList} ItemSeparatorComponent={ItemSeparatorComponent} data={data} keyExtractor={keyExtractor} renderItem={renderItem} />
     </View>
   );
 };
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
 
 FlatTable.propTypes = {
   style: ViewPropTypes.style,
+  ItemSeparatorComponent: node,
   data: array.isRequired,
   fields: array.isRequired,
   keyExtractor: func.isRequired,

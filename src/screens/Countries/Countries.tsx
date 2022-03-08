@@ -8,6 +8,7 @@ import { object } from 'prop-types';
 import { getCountries } from '@/actions/covid';
 import CountryItem from '@/components/CountryItem';
 import LoadingBar from '@/components/LoadingBar';
+import Separator from '@/components/Separator';
 import screens from '@/constants/screens';
 import testIds from '@/constants/testIds';
 import { Country } from '@/services/covid';
@@ -34,7 +35,7 @@ const Countries = ({ navigation }) => {
   return (
     <View style={styles.container} testID={testIds.COUNTRIES_SCREEN.container}>
       {isLoading && <LoadingBar />}
-      <FlatList testID={testIds.COUNTRIES_SCREEN.countryList} style={styles.countryList} data={countries} keyExtractor={countryKeyExtractor} renderItem={renderCountryItem} />
+      <FlatList testID={testIds.COUNTRIES_SCREEN.countryList} style={styles.countryList} ItemSeparatorComponent={Separator} data={countries} keyExtractor={countryKeyExtractor} renderItem={renderCountryItem} />
     </View>
   );
 }
