@@ -18,7 +18,7 @@ const Login = () => {
 
       <View style={styles.logins}>
         <TouchableOpacity
-          testID={testIds.LOGIN_SCREEN.GOOGLE_LOGIN}
+          testID={testIds.LOGIN_SCREEN.googleLoginButton}
           onPress={signIn}
           style={[appStyles.BUTTON.PRIMARY, styles.googleLoginButton]}
         >

@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 // @ts-ignore
 const LogOutButton = ({ signOut }) => (
   <TouchableOpacity
-    testID={testIds.LOGIN_SCREEN.GOOGLE_LOGIN}
+    testID={testIds.COUNTRY_NAVIGATOR.signOutButton}
     onPress={signOut}
     style={[appStyles.BUTTON.DANGER, { padding: dimensions.SPACING.X1, marginRight: dimensions.SPACING.X1 }]}
   >

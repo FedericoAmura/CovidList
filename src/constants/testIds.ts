@@ -1,7 +1,7 @@
 export default {
   LOGIN_SCREEN: {
     container: 'login-screen-container',
-    GOOGLE_LOGIN: 'login-screen-google-signin',
+    googleLoginButton: 'login-screen-google-signin',
   },
 
   COUNTRIES_SCREEN: {
@@ -15,6 +15,7 @@ export default {
 
   COUNTRY_NAVIGATOR: {
     container: 'country-navigator-container',
+    signOutButton: 'country-navigator-sign-out',
   },
 
   COUNTRY_ITEM_COMPONENT: {

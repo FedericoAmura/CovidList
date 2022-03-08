@@ -1,7 +1,6 @@
 import React from 'react';
-import { RenderAPI, waitFor } from '@testing-library/react-native';
+import { fireEvent, RenderAPI, waitFor } from '@testing-library/react-native';
 
-import { setSignedInStatus } from '#/__mocks__/googleAuth';
 import { renderWithNavigation } from '#/helpers';
 import Auth from '@/navigators/Auth';
 import testIds from '@/constants/testIds';
@@ -20,12 +19,30 @@ describe('AuthNavigator', () => {
     expect(loginScreen).toBeTruthy();
   });
 
-  it('Should render countries screen when user is logged in', async () => {
-    await waitFor(async () => {
-      await setSignedInStatus(true);
+  it('Should render countries screen after user signs in', async () => {
+    const loginButton = render.getByTestId(testIds.LOGIN_SCREEN.googleLoginButton);
+    fireEvent.press(loginButton);
+
+    await waitFor(() => {
+      const countriesScreen = render.getByTestId(testIds.COUNTRIES_SCREEN.container);
+      expect(countriesScreen).toBeTruthy();
+    });
+  });
+
+  it('Should render login screen after user signs out', async () => {
+    await waitFor(() => {
+      const loginButton = render.getByTestId(testIds.LOGIN_SCREEN.googleLoginButton);
+      fireEvent.press(loginButton);
     });
 
-    const countriesScreen = render.getByTestId(testIds.COUNTRIES_SCREEN.container);
-    expect(countriesScreen).toBeTruthy();
+    await waitFor(() => {
+      const logoutButton = render.getByTestId(testIds.COUNTRY_NAVIGATOR.signOutButton);
+      fireEvent.press(logoutButton);
+    });
+
+    await waitFor(() => {
+      const loginScreen = render.getByTestId(testIds.LOGIN_SCREEN.container);
+      expect(loginScreen).toBeTruthy();
+    });
   });
 });

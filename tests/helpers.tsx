@@ -3,6 +3,8 @@ import { Provider } from 'react-redux';
 import { render } from '@testing-library/react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+import { SessionProvider } from '@/components/Session';
 import configureStore from '@/configureStore';
 
 const TEST_SCREEN = 'TestScreen';
@@ -20,17 +22,19 @@ export const renderWithNavigation = (component: React.ComponentType<any>, compon
 
   const App = () => (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            key={TEST_SCREEN}
-            name={TEST_SCREEN}
-            component={component}
-            initialParams={componentParams}
-          />
-          {otherScreens && renderOtherScreens(otherScreens)}
-        </Stack.Navigator>
-      </NavigationContainer>
+      <SessionProvider>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen
+              key={TEST_SCREEN}
+              name={TEST_SCREEN}
+              component={component}
+              initialParams={componentParams}
+            />
+            {otherScreens && renderOtherScreens(otherScreens)}
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SessionProvider>
     </Provider>
   );
 
