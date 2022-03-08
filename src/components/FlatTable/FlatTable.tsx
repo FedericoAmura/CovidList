@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View, ViewPropTypes } from 'react-native';
-import { array, func, node } from 'prop-types';
+import { array, func, object } from 'prop-types';
 
 import testIds from '@/constants/testIds';
 import { colors, dimensions, styles as appStyles } from '@/constants/styles';
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
 
 FlatTable.propTypes = {
   style: ViewPropTypes.style,
-  ItemSeparatorComponent: node,
+  ItemSeparatorComponent: object,
   data: array.isRequired,
   fields: array.isRequired,
   keyExtractor: func.isRequired,
